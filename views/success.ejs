@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SSD Project-IT17054546,IT17134804</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+    <link href="../public/style.css" rel="stylesheet" type="text/css">
+    
+
+    <style>
+      body {
+        padding-top:40px;
+        word-wrap: break-word;
+        background-color: darkgray;
+        border-radius: 50px;
+
+      }
+
+      
+      .wrapper {
+            position: left;
+            width: 300px;
+            height: 50%;
+            /* margin-left: 0;
+            margin-right: auto;  */
+        }
+
+
+      
+    </style>
+  </head>
+  <body>
+    <div class="container" style=" border: thick solid rgb(94, 97, 97); background-color: #f5f5f5;">  
+    <div class="container" style="width: 100%;">
+
+    </br>
+
+    <div class="col-sm-6" style="  margin-left: auto; margin-right: auto; background-color:white" >
+          
+    <div class="wrapper">
+      <img class="img-responsive" src="https://www.technobezz.com/files/uploads/2020/05/125-seis-nuevas-funciones-de-google-drive-800x500.jpg">
+    </div>
+      </div>
+      
+      <div class="col-sm-6" style=" height: 187px; margin-left: auto; margin-right: auto; background-color:white" >
+        <div class="page-header text-center">
+          <h1><span class="fa fa-upload" style="font-size: 200%; "></span> Uploading Page</h1>
+          <!-- <a href="/logout" class="btn btn-default btn-sm">Logout</a> -->
+        </div> 
+      </div>
+    </div>
+
+  </br>
+
+
+
+      <div class="row" style="height: 330px;">
+        <div class="col-sm-6" style="  margin-left: 30px; margin-right: auto; width: 250px" >
+
+          <h3>Welcome!</h3>
+          <div class="content">
+            <div class="card">
+              <div class="firstinfo"><img src="<%=pic%>"/>
+                <div class="profileinfo">
+                  <h1> <%= name %></h1>
+                  
+                </br>
+                  <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="badgescard" style="margin-left: -10px;"> <span class="devicons devicons-django"></span><span class="devicons devicons-python"> </span><span class="devicons devicons-codepen"></span><span class="devicons devicons-javascript_badge"></span><span class="devicons devicons-gulp"></span><span class="devicons devicons-angular"></span><span class="devicons devicons-sass"> </span></div>
+          </div>
+
+        </br>
+          <!-- <div class="well">
+            <h3 class="text-primary">
+              <span></span> Logged-in User :
+            </h3>
+            <p>
+              <strong>Name :</strong> 
+               <%= name %>
+              <br/>
+            </br>
+              <strong>Photo :</strong>
+            </br>
+            </br>
+              <img src="<%=pic%>" width="200" height="180" alt="" style="border: thick solid darkslategrey;"/>
+            </p>
+          </div>-->
+        </div> 
+
+
+        
+        <div class="col-sm-8" style="  margin-left: 300px; margin-right: auto; width: 500px;">
+          <div class="well" style=" margin-top: 30px; border-radius: 50px; background-color: rgb(206, 203, 203);">
+            <h3 class="text-danger">
+              <span class="fa fa-google-plus"></span> Upload File to Google Drive
+            </h3>
+
+            <% if (success) { %>
+              <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a
+                >
+                <strong>Success!</strong> Your File is Uploaded.
+              </div>
+              <%}%>
+
+
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <input
+                  type="file"
+                  class="form-control"
+                  name="file"
+                  required
+                  id=""
+                />
+              </div>
+            </br>
+              <div class="form-group">
+                <button class="btn btn-block btn-danger">
+                  Upload File
+                </button>
+              </div>
+            </form>
+          </div>
+        </br>
+        </div>
+
+        <!-- <div class="col-sm-6" style="  margin-left: 30px; margin-right: auto; width: 300px" >
+          <div class="well">
+            <div class="wrapper">
+              <img class="img-responsive" src="https://i.pcmag.com/imagery/lineups/04paueUFPZ38gBo5HRX3Vfv-1.1569492723.fit_lim.size_1200x630.jpg">
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</html>
