@@ -16,13 +16,14 @@ const CLIENT_SECRET = OAuth2Data.web.client_secret
 const REDIRECT_URI = OAuth2Data.web.redirect_uris[0]
 
 
-
+//create client object pass values
 const OAuth2Client = new google.auth.OAuth2(
     CLIENT_ID,
     CLIENT_SECRET,
     REDIRECT_URI
 )
 
+//to see if authenticated
 var authed = false
 
 var Storage = multer.diskStorage({
@@ -39,15 +40,15 @@ var Storage = multer.diskStorage({
   }).single("file"); //Field name and max count
   
 
+//Defines the kind of information that we need to access
 const SCOPES = "https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/userinfo.profile"
 
 
+//set view engine to ejs which creates front end
 app.set("view engine", "ejs")
 
-// app.use( express.static( "public" ) );
 
-// app.use(express.static(__dirname + '/public'));
-
+//Load static files
 app.use('/public', express.static('public'));
 
 app.get('/',(req,res) => {
@@ -80,6 +81,7 @@ app.get('/',(req,res) => {
     }
 })
 
+//redirect URI
 app.get('/google/callback',(req,res) => {
     const code = req.query.code
 
@@ -102,6 +104,7 @@ app.get('/google/callback',(req,res) => {
     }
 })
 
+//Uploading to drive
 app.post('/upload', (req,res) => {
     upload(req,res,function(err) {
         if(err) throw err
@@ -111,16 +114,13 @@ app.post('/upload', (req,res) => {
             version: 'v3',
             auth: OAuth2Client
         })
-
         const filemetadata = {
             name: req.file.filename
         }
-
         const media = {
             mimeType: req.file.mimetype,
             body: fs.createReadStream(req.file.path)
         }
-
         drive.files.create ({
             resource: filemetadata,
             media: media,
@@ -129,13 +129,13 @@ app.post('/upload', (req,res) => {
             if(err) throw err
 
             //delete file inside images folder
-
             fs.unlinkSync(req.file.path)
             res.render("success", {name:name, pic:pic, success:true})
         })
     })
 })
 
+//logout route
 app.get('/logout',(req,res) => {
     authed = false
     res.redirect('/')
